@@ -10,6 +10,24 @@ var users = require('./routes/users');
 
 var app = express();
 
+/**
+ * test node-postgres
+ */
+
+var pg = require('pg');
+
+var client = new Client({
+      user: 'gyyxwsydzrdxse',
+      password: '5bXPxORpd-hSiVRbKGtFFrZ5eU',
+      database: 'd3lqhjvo5md35b',
+      host: 'ec2-54-204-25-54.compute-1.amazonaws.com',
+      port: 5432
+    });
+
+client.connect();
+client.end();
+//var query = client.query("CREATE TABLE products (product_no integer, name text, price numeric);");
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -55,6 +73,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
