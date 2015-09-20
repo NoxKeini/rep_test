@@ -16,7 +16,7 @@ var app = express();
 
 var pg = require('pg');
 
-var client = new Client({
+var client = new pg.Client({
       user: 'gyyxwsydzrdxse',
       password: '5bXPxORpd-hSiVRbKGtFFrZ5eU',
       database: 'd3lqhjvo5md35b',
