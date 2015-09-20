@@ -25,8 +25,11 @@ var client = new pg.Client({
     });
 
 client.connect();
-client.end();
-//var query = client.query("CREATE TABLE products (product_no integer, name text, price numeric);");
+
+var query = client.query("CREATE TABLE products (product_no integer, name text, price numeric);");
+
+//client.end();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
