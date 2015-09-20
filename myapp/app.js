@@ -11,9 +11,9 @@ var users = require('./routes/users');
 var app = express();
 
 /**
- * test node-postgres
+ * test node-postgres #1
  */
-
+/*
 var pg = require('pg');
 
 var client = new pg.Client({
@@ -29,6 +29,26 @@ client.connect();
 var query = client.query("CREATE TABLE products (product_no integer, name text, price numeric);");
 
 //client.end();
+*/
+
+/**
+ * test node-postgres #2
+ */
+
+var pg = require('pg');
+
+var DATABASE_URL = 'postgres://gyyxwsydzrdxse:5bXPxORpd-hSiVRbKGtFFrZ5eU@ec2-54-204-25-54.compute-1.amazonaws.com:5432/d3lqhjvo5md35b';
+
+pg.connect(process.env.DATABASE_URL, function(err, client) {
+  if (err) throw err;
+  console.log('Connected to postgres! Getting schemas...');
+
+  client
+    .query('SELECT table_schema,table_name FROM information_schema.tables;')
+    .on('row', function(row) {
+      console.log(JSON.stringify(row));
+    });
+});
 
 
 // view engine setup
